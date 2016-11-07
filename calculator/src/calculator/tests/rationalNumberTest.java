@@ -13,7 +13,14 @@ public class rationalNumberTest {
 	@Before
 	public void setUp() throws Exception {
 	}
-
+	
+	@Test
+	public void equalsTest(){
+		assertTrue(new RationalValue(4, 2).equals(new RationalValue(4, 2)));
+		assertTrue(new RationalValue(-4, 2).equals(new RationalValue(4, -2)));
+		assertFalse(new RationalValue(4, 2).equals(new RationalValue(2, 4)));
+	}
+	
 	@Test
 	public void addTest() {
 		RationalValue first = new RationalValue(1, 3);
@@ -75,6 +82,16 @@ public class rationalNumberTest {
 		{
 			assertTrue(true);
 		}
+	}
+	
+	@Test
+	public void simplifyTest(){
+		RationalValue first = (RationalValue) new RationalValue(4, 2).simplify();
+		RationalValue second = new RationalValue(2, 1);
+		assertTrue(first.equals(second));
+		first = (RationalValue) new RationalValue(36, -198).simplify();
+		second = new RationalValue(-2, 11);
+		assertTrue(first.equals(second));		
 	}
 	
 }

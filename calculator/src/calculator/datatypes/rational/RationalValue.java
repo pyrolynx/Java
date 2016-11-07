@@ -10,9 +10,9 @@ public class RationalValue extends AbstractValue{
 	
 	public RationalValue(int n, int d)
 	{
-		super();
-		this.numerator = n;
-		this.denomenator = d;
+		super();  
+		this.numerator = d < 0 ? -n : n;
+		this.denomenator = d < 0 ? -d : d;
 	}
 	
 	public String toString()
