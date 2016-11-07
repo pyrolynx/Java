@@ -50,4 +50,8 @@ public class ComplexValue extends AbstractValue {
 		return view;
 	}
 
+	public boolean equals(AbstractValue operand){
+		return this.real == ((ComplexValue) operand).real && 
+				this.imaginary == ((ComplexValue) operand).imaginary;
+	}
 }
