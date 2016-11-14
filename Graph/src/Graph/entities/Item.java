@@ -16,7 +16,8 @@ public class Item<T> {
 	@Override
 	public boolean equals(Object item)
 	{
-		return ((Item<T>)item).value.equals(this.value);
+		boolean result = ((Item<T>)item).value.equals(this.value);
+		return result;
 	}
 	
 }

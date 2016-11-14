@@ -7,18 +7,11 @@ public class User {
 	{
 		this.surname = surname;
 	}
-	
-	@Override 
-	public int hashCode()
-	{
-		return this.surname.length();
-	}
-	
-	
+		
 	@Override
 	public boolean equals(Object other)
 	{
-		return ((User)other).surname == this.surname;
+		return ((User)other).surname.equals(this.surname);
 	}
 	
 	@Override

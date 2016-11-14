@@ -31,7 +31,7 @@ public class Program {
 			if (socialNetwork.find(secondUser) == null)
 				secondUserItem = new Item<User>(socialNetwork, secondUser);
 			else
-				secondUserItem = socialNetwork.find(firstUser);
+				secondUserItem = socialNetwork.find(secondUser);
 			socialNetwork.add(secondUserItem);
 			socialNetwork.addEdge(firstUserItem, secondUserItem);
 		}
@@ -67,7 +67,8 @@ public class Program {
 		String file = null;
 		if (args.length == 0)
 		{
-			file = "links.txt";
+			System.out.println("Empty args! Exit..");
+			System.exit(0);
 		}
 		else
 		{
