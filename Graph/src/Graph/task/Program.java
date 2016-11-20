@@ -5,6 +5,7 @@ import java.nio.charset.Charset;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.stream.Stream;
 
 import Graph.entities.*;
@@ -50,14 +51,19 @@ public class Program {
 		}
 	}
 	
-	public static void printFriends()
+	public static void printPossibleFriends(User user)
 	{
-		for (Item<User> user: socialNetwork)
-		{
-			System.out.println(user.value);
-			for (Item<User> friend: socialNetwork.getAdjacent(user))
-				System.out.println("\t"+friend.value);
-		}
+		ArrayList<User> possibleFriends = new ArrayList<User>();
+		ArrayList<Item<User>> friends = 
+				socialNetwork.getAdjacent(new Item<User>(null, user));
+		for (Item<User> friend: friends)
+			for (Item<User> mate: socialNetwork.getAdjacent(friend))
+				if (!possibleFriends.contains(mate.value)
+						&& !friends.contains(mate)
+						&& !user.equals(mate.value))
+					possibleFriends.add(mate.value);
+		System.out.println("Maybe they can be friends of %1$s".format(user.surname));
+		System.out.println(possibleFriends);
 	}
 	
 	
@@ -65,17 +71,21 @@ public class Program {
 	{
 		
 		String file = null;
-		if (args.length == 0)
+		User user = null;
+		if (args.length != 2)
 		{
+//			file = "links.txt";
+//			user = new User("Bochik");
 			System.out.println("Empty args! Exit..");
 			System.exit(0);
 		}
 		else
 		{
 			file = args[0];
+			user = new User(args[1]);
 		}
 		parseLinks(file);
-		printFriends();
+		printPossibleFriends(user);
 		
 	}
 }

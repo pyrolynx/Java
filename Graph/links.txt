@@ -1,8 +1,8 @@
-Brown - White
-Jackson - Phillips
-Less Paul - White
-Jackson - Presley
-Green - Jackson
-Smagin - Valitov
-Green - Smagin
-Star - White
+Valitov - Churkin
+Valitov - Bochik
+Valitov - Smagin
+Bochik - Dubrovin
+Smagin - Churkin
+Churkin - Plaxin
+Smagin - Bochik
+Churkin - Lopuh
