@@ -6,6 +6,8 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.ListIterator;
 import java.util.stream.Stream;
 
 import Graph.entities.*;
@@ -62,6 +64,16 @@ public class Program {
 						&& !friends.contains(mate)
 						&& !user.equals(mate.value))
 					possibleFriends.add(mate.value);
+		ListIterator<User> it = possibleFriends.iterator();
+		while (it.hasNext())
+		{
+			User friend = it.next();
+			for (Item<User> mate: socialNetwork.getAdjacent(new Item<User>(null ,friend)))
+				if (!possibleFriends.contains(mate.value)
+						&& !friends.contains(mate)
+						&& !user.equals(mate.value))
+					possibleFriends.add(mate.value);
+		}
 		System.out.println("Maybe they can be friends of %1$s".format(user.surname));
 		System.out.println(possibleFriends);
 	}
@@ -74,10 +86,10 @@ public class Program {
 		User user = null;
 		if (args.length != 2)
 		{
-//			file = "links.txt";
-//			user = new User("Bochik");
-			System.out.println("Empty args! Exit..");
-			System.exit(0);
+			file = "links.txt";
+			user = new User("Plaxin");
+//			System.out.println("Empty args! Exit..");
+//			System.exit(0);
 		}
 		else
 		{
