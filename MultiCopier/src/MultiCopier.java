@@ -17,7 +17,7 @@ public class MultiCopier {
 	{
 		int index = 1;
 		ArrayList<String> names = new ArrayList<String>();
-		String name = file.getName().replaceAll("\\.", " (%d).");
+		String name = path.getAbsolutePath()+ "\\" + file.getName().replaceAll("\\.", " (%d).");
 		File newFile = new File(String.format(name, index));
 		while (newFile.exists() | number > names.size())
 		{
@@ -28,7 +28,6 @@ public class MultiCopier {
 			index++;
 			newFile = new File(String.format(name, index));
 		}
-		
 		return names.toArray(new String[0]);
 	}
 	

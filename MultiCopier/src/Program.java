@@ -7,7 +7,7 @@ public class Program {
 		String[] arguments = args;
 		if (arguments.length != 3)
 		{
-//			arguments = new String[]{"100", "file.txt", ".\\Copies"};
+//			arguments = new String[]{"11", "file.txt", ".\\Copies"};
 			System.out.println("Invalid number of arguments!");
 			System.exit(2);
 		}
